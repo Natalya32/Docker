@@ -1,13 +1,14 @@
 version: '3.7'
 services:
-  db:
-      image: postgres
-      restart: always
-      ports:
-        - 5432:5432
-      volumes:
-        - ./data:/var/lib/postgresql/data
-      environment:
-        POSTGRES_PASSWORD: example
-        POSTGRES_USER: postgres
-        POSTGRES_DB: db
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: postgres
+      POSTGRES_DB: db
+      PGDATA: /var/lib/postgresql/data/mnt
